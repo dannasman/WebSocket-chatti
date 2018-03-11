@@ -1,0 +1,24 @@
+<div>
+  <input placeholder="Nimi" type="text" [(ngModel)]="sender">
+</div>
+<div>
+  <form (submit)="send()">
+    <div>
+      <input name="clientMessage" matInput placeholder="Write a message" type="text" [(ngModel)]="clientMessage">
+    </div>
+    <button type="submit">
+      <i>send</i>
+    </button>
+  </form>
+</div>
+<div>
+  <div class="viewer">
+    <div class="message" *ngFor="let msg of serverMessages" [ngClass]="{'others': !isMine(msg)}">
+      <div class="content" [ngClass]="{'others': !isMine(msg)}">
+        <span>{{ msg.sender }} : </span>
+        <span>{{ msg.content }} </span>
+      </div>
+    </div>
+  </div>
+</div>
+
